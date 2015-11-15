@@ -105,3 +105,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# this is what to do when seperate django server and static file server
+# static file related to the file but will be served outside of django project
+# because when collectstatic, the file will go here and so are others' files
+# don't want to keep those things here
+# public static file
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "public_shelter_static", "static_root")
+
+# our static file
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static_in_pro", "our_static"),
+    )
+
+MEDIA_URL = '/media/'
+# we can also put the uploaded files to the external root of files, just like the external static files.
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
